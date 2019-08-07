@@ -44,7 +44,7 @@ export default Posts;
 
 export const POSTS = gql`
   query allPosts {
-    allPosts {
+    allPosts(orderBy: createdAt_DESC) {
       id
       title
       body
