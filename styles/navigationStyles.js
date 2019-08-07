@@ -3,6 +3,10 @@ export default function(title) {
     title: title,
     headerStyle: {
       backgroundColor: "red"
-    }
+    },
+    headerBackTitleStyle: {
+      color: "white"
+    },
+    headerTintColor: "white"
   };
 }

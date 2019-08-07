@@ -54,7 +54,11 @@ const AppNavigator = createStackNavigator({
       title: navigation.state.params.title,
       headerStyle: {
         backgroundColor: "red"
-      }
+      },
+      headerBackTitleStyle: {
+        color: "white"
+      },
+      headerTintColor: "white"
     })
   },
   NewPost: {

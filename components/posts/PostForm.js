@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, StyleSheet, TextInput, Button } from "react-native";
+import { Form, Item, Input, Label } from "native-base";
 
 const PostForm = props => {
   const [title, setTitle] = useState("");
@@ -12,32 +13,30 @@ const PostForm = props => {
     console.log(title, body, "MMM");
   };
   return (
-    <View>
-      <TextInput
-        style={styles.title}
-        onChangeText={value => setTitle(value)}
-        value={title}
-      />
-      <TextInput
-        style={styles.body}
-        onChangeText={value => setBody(value)}
-        value={body}
-      />
+    <Form>
+      <Item floatingLabel>
+        <Label>Title</Label>
+        <Input onChangeText={value => setTitle(value)} value={title} />
+      </Item>
+
+      <Item floatingLabel>
+        <Label>Body</Label>
+        <Input
+          multiline
+          style={styles.body}
+          onChangeText={value => setBody(value)}
+          value={body}
+        />
+      </Item>
+
       <Button title="Save Post" onPress={submitForm} />
-    </View>
+    </Form>
   );
 };
 
 const styles = StyleSheet.create({
-  title: {
-    height: 40,
-    borderColor: "#333",
-    borderWidth: 1
-  },
   body: {
     height: 400,
-    borderColor: "#333",
-    borderWidth: 1,
     textAlignVertical: "top"
   }
 });
