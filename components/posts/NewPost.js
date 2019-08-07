@@ -1,21 +1,25 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, ActivityIndicator } from "react-native";
 import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
 
+import { POSTS } from "./Posts";
 import PostForm from "./PostForm";
 
-const NewPost = () => {
-  const [createPost, { data }] = useMutation(NEW_POST);
+const NewPost = props => {
+  const [createPost, { data, loading }] = useMutation(NEW_POST, {
+    refetchQueries: () => [{ query: POSTS }]
+  });
   const onSubmit = async ({ title, body }) => {
     console.log("TITLE AND BODY", title, body);
     try {
       await createPost({ variables: { title, body } });
-      console.log("data", data);
+      props.navigation.goBack();
     } catch (err) {
       console.error(err);
     }
   };
+  if (loading) return <ActivityIndicator />;
   return (
     <View>
       <PostForm onSubmit={onSubmit} />

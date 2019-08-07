@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, ActivityIndicator } from "react-native";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
@@ -8,12 +8,11 @@ function Post(props) {
     variables: { id: props.navigation.state.params.id }
   });
 
-  if (loading) return null;
+  if (loading) return <ActivityIndicator />;
   if (error) return <Text>`Error! ${error}`</Text>;
   return (
     <View>
-      <Text>{props.navigation.state.params.id}</Text>
-      <Text>{data.Post.title}</Text>
+      <Text>{data.Post.body}</Text>
     </View>
   );
 }
@@ -25,6 +24,7 @@ const POST = gql`
     Post(id: $id) {
       id
       title
+      body
     }
   }
 `;

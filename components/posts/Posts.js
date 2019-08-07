@@ -1,12 +1,12 @@
 import React from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, ActivityIndicator } from "react-native";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
 const Posts = props => {
   const { loading, error, data } = useQuery(POSTS);
 
-  if (loading) return <Text>Loading...</Text>;
+  if (loading) return <ActivityIndicator />;
   if (error) return <Text>Error :(</Text>;
   console.log(data);
 
@@ -18,7 +18,8 @@ const Posts = props => {
           <Text
             onPress={() =>
               props.navigation.navigate("Post", {
-                id: item.id
+                id: item.id,
+                title: item.title
               })
             }
           >
@@ -33,11 +34,12 @@ const Posts = props => {
 
 export default Posts;
 
-const POSTS = gql`
+export const POSTS = gql`
   query allPosts {
     allPosts {
       id
       title
+      body
     }
   }
 `;
