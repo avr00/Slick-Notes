@@ -3,9 +3,9 @@ import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
 import navigationStyles from "./styles/navigationStyles";
-import Posts from "./Posts";
-import NewPost from "./NewPost";
-import Post from "./Post";
+import Posts from "./components/posts/Posts";
+import NewPost from "./components/posts/NewPost";
+import Post from "./components/posts/Post";
 
 function Home(props) {
   const goToPost = () => {
