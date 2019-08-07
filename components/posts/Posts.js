@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, FlatList, ActivityIndicator } from "react-native";
+import { List, ListItem, Body, Right, Icon } from "native-base";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
@@ -12,22 +13,29 @@ const Posts = props => {
 
   return (
     <View>
-      <FlatList
-        data={data.allPosts}
-        renderItem={({ item }) => (
-          <Text
-            onPress={() =>
-              props.navigation.navigate("Post", {
-                id: item.id,
-                title: item.title
-              })
-            }
-          >
-            {item.title}
-          </Text>
-        )}
-        keyExtractor={item => item.id}
-      />
+      <List>
+        <FlatList
+          data={data.allPosts}
+          renderItem={({ item }) => (
+            <ListItem
+              onPress={() =>
+                props.navigation.navigate("Post", {
+                  id: item.id,
+                  title: item.title
+                })
+              }
+            >
+              <Body>
+                <Text>{item.title}</Text>
+              </Body>
+              <Right>
+                <Icon name="arrow-forward" />
+              </Right>
+            </ListItem>
+          )}
+          keyExtractor={item => item.id}
+        />
+      </List>
     </View>
   );
 };

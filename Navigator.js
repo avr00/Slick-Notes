@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
+import { Fab, Icon } from "native-base";
 
 import navigationStyles from "./styles/navigationStyles";
 import Posts from "./components/posts/Posts";
@@ -17,9 +18,9 @@ function Home(props) {
   return (
     <View style={styles.container}>
       <Posts navigation={props.navigation} />
-      <TouchableHighlight onPress={goToNewPost} style={styles.newPost}>
-        <Text style={styles.newPostText}>New Post</Text>
-      </TouchableHighlight>
+      <Fab onPress={goToNewPost} style={styles.newPost}>
+        <Icon name="add" />
+      </Fab>
     </View>
   );
 }
@@ -34,8 +35,7 @@ const styles = StyleSheet.create({
     // justifyContent: "center"
   },
   newPost: {
-    backgroundColor: "#82D8D8",
-    padding: 20
+    backgroundColor: "#82D8D8"
   },
   newPostText: {
     fontSize: 20,
