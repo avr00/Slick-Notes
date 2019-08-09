@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
 import UserForm from "./UserForm";
+import { signIn } from "../../LoginUtils";
 
 const CreateUser = () => {
   const [createUserMutation] = useMutation(CREATE_USER);
@@ -12,10 +13,10 @@ const CreateUser = () => {
   const createUser = async ({ email, password }) => {
     try {
       await createUserMutation({ variables: { email, password } });
-      const signIn = await signInUserMutation({
+      const signInResponse = await signInUserMutation({
         variables: { email, password }
       });
-      console.log(signIn.data.signinUser.token);
+      signIn(signInResponse.data.signinUser.token);
     } catch (err) {
       console.log(err);
     }
