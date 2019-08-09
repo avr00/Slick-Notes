@@ -1,49 +1,17 @@
-import React from "react";
-import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
-import { createStackNavigator, createAppContainer } from "react-navigation";
-import { Fab, Icon } from "native-base";
+import {
+  createSwitchNavigator,
+  createStackNavigator,
+  createAppContainer
+} from "react-navigation";
 
 import navigationStyles from "./styles/navigationStyles";
-import Posts from "./components/posts/Posts";
 import NewPost from "./components/posts/NewPost";
 import Post from "./components/posts/Post";
+import Login from "./components/user/Login";
+import Home from "./components/home/Home";
+import AuthLoadingScreen from "./components/auth/AuthLoadingScreen";
 
-function Home(props) {
-  const goToPost = () => {
-    props.navigation.navigate("Post");
-  };
-  const goToNewPost = () => {
-    props.navigation.navigate("NewPost");
-  };
-  return (
-    <View style={styles.container}>
-      <Posts navigation={props.navigation} />
-      <Fab onPress={goToNewPost} style={styles.newPost}>
-        <Icon name="add" />
-      </Fab>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "space-between"
-    // flex: 1,
-    // backgroundColor: "#fff",
-    // alignItems: "center",
-    // justifyContent: "center"
-  },
-  newPost: {
-    backgroundColor: "#82D8D8"
-  },
-  newPostText: {
-    fontSize: 20,
-    textAlign: "center"
-  }
-});
-
-const AppNavigator = createStackNavigator({
+const AppStack = createStackNavigator({
   Home: {
     screen: Home,
     navigationOptions: navigationStyles("Home")
@@ -67,4 +35,17 @@ const AppNavigator = createStackNavigator({
   }
 });
 
-export default createAppContainer(AppNavigator);
+const AuthStack = createStackNavigator({ SignIn: Login });
+
+export default createAppContainer(
+  createSwitchNavigator(
+    {
+      AuthLoading: AuthLoadingScreen,
+      App: AppStack,
+      Auth: AuthStack
+    },
+    {
+      initialRouteName: "AuthLoading"
+    }
+  )
+);
