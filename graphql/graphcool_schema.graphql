@@ -1,0 +1,30 @@
+# projectId: cjz0vkrh238ui0138ioeff5yo
+# version: 14
+
+type File @model {
+  contentType: String!
+  createdAt: DateTime!
+  id: ID! @isUnique
+  name: String!
+  secret: String! @isUnique
+  size: Int!
+  updatedAt: DateTime!
+  url: String! @isUnique
+}
+
+type Post @model {
+  id: ID! @isUnique
+  title: String!
+  body: String
+  createdAt: DateTime!
+  user: User! @relation(name: "PostOnUser")
+}
+
+type User @model {
+  createdAt: DateTime!
+  id: ID! @isUnique
+  updatedAt: DateTime!
+  email: String @isUnique
+  password: String
+  posts: [Post!]! @relation(name: "PostOnUser")
+}
