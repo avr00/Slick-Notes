@@ -3,16 +3,10 @@ import { View, Text, StyleSheet } from "react-native";
 import { useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { withNavigation } from "react-navigation";
-import styled from "styled-components";
 
+import { TitleText, Container } from "../styles/styles";
 import UserForm from "./UserForm";
 import { signIn } from "../../LoginUtils";
-
-const TitleText = styled.Text`
-  color: white;
-  font-size: 30;
-  text-align: center;
-`;
 
 const CreateUser = props => {
   const [createUserMutation] = useMutation(CREATE_USER);
@@ -32,21 +26,14 @@ const CreateUser = props => {
   };
 
   return (
-    <View style={styles.container}>
+    <Container>
       <TitleText>Register</TitleText>
       <UserForm onSubmit={createUser} type="Register" />
-    </View>
+    </Container>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    backgroundColor: "#272727",
-    padding: 20
-  }
-});
+
 
 export default withNavigation(CreateUser);
 
