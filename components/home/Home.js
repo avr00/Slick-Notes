@@ -5,6 +5,8 @@ import { useApolloClient } from "@apollo/react-hooks";
 
 import Posts from "../posts/Posts";
 import { signOut } from "../../LoginUtils";
+import { MaterialButton, ButtonText, FabIcon } from "../styles/styles";
+
 function Home(props) {
   const client = useApolloClient();
   const goToNewPost = () => {
@@ -14,14 +16,15 @@ function Home(props) {
   return (
     <View style={styles.container}>
       <Posts navigation={props.navigation} />
-      <Button
+      <MaterialButton
         onPress={async () => {
           await signOut();
           client.resetStore();
           props.navigation.navigate("Auth");
         }}
-        title="Logout"
-      />
+      >
+        <ButtonText>Logout</ButtonText>
+      </MaterialButton>
       <Fab onPress={goToNewPost} style={styles.newPost}>
         <Icon name="add" />
       </Fab>
@@ -32,11 +35,9 @@ function Home(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-between"
-    // flex: 1,
-    // backgroundColor: "#fff",
-    // alignItems: "center",
-    // justifyContent: "center"
+    justifyContent: "space-between",
+    backgroundColor: "#272727",
+    padding: 10
   },
   newPost: {
     backgroundColor: "#82D8D8"

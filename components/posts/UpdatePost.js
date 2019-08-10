@@ -2,9 +2,11 @@ import React from "react";
 import { View, ActivityIndicator } from "react-native";
 import { gql } from "apollo-boost";
 import { useMutation, useQuery } from "@apollo/react-hooks";
+import styled from "styled-components";
 
 import PostForm from "./PostForm";
 import { USER } from "../../graphql/queries";
+import { UpdateCreatePostContainer } from "../styles/styles";
 
 const NewPost = props => {
   const { loading: loadingUser, error, data: userData } = useQuery(USER);
@@ -30,14 +32,14 @@ const NewPost = props => {
   };
   if (loading) return <ActivityIndicator />;
   return (
-    <View>
+    <UpdateCreatePostContainer>
       <PostForm
         onSubmit={onSubmit}
         update={true}
         title={props.navigation.state.params.post.Post.title}
         body={props.navigation.state.params.post.Post.body}
       />
-    </View>
+    </UpdateCreatePostContainer>
   );
 };
 

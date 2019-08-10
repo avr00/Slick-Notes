@@ -3,6 +3,20 @@ import { View, Text, FlatList, ActivityIndicator } from "react-native";
 import { List, ListItem, Body, Right, Icon } from "native-base";
 import { useQuery } from "@apollo/react-hooks";
 import { USER } from "../../graphql/queries";
+import styled from "styled-components";
+
+import { Container } from "../styles/styles";
+
+export const PostsContainer = styled.View`
+  flex: 1;
+  justify-content: flex-start;
+  background-color: #272727;
+  padding: 20px;
+`;
+
+export const ListText = styled.Text`
+  color: white;
+`;
 
 const Posts = props => {
   const { loading, error, data } = useQuery(USER, {
@@ -30,7 +44,7 @@ const Posts = props => {
               }
             >
               <Body>
-                <Text>{item.title}</Text>
+                <ListText>{item.title}</ListText>
               </Body>
               <Right>
                 <Icon name="arrow-forward" />

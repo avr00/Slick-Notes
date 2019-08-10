@@ -1,19 +1,6 @@
 import React, { useState } from "react";
-import { View, Text, TouchableHighlight } from "react-native";
 import { Form, Item, Input, Label } from "native-base";
-import styled from "styled-components";
-
-const MaterialButton = styled.TouchableHighlight`
-  align-items: center;
-  background-color: #6202ee;
-  padding: 15px;
-  margin-top: 20px;
-`;
-
-const ButtonText = styled.Text`
-  color: white;
-  font-size: 20px;
-`;
+import { MaterialButton, ButtonText } from "../styles/styles";
 
 const UserForm = props => {
   const [email, setEmail] = useState("");
@@ -28,6 +15,7 @@ const UserForm = props => {
       <Item floatingLabel>
         <Label style={{ color: "white" }}>Email</Label>
         <Input
+          style={{ color: "white" }}
           keyboardType="email-address"
           value={email}
           onChangeText={value => setEmail(value)}
@@ -36,6 +24,7 @@ const UserForm = props => {
       <Item floatingLabel>
         <Label style={{ color: "white" }}>Password</Label>
         <Input
+          style={{ color: "white" }}
           secureTextEntry
           value={password}
           onChangeText={value => setPassword(value)}

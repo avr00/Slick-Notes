@@ -6,6 +6,11 @@ export const TitleText = styled.Text`
   text-align: center;
 `;
 
+export const NormalText = styled.Text`
+  color: white;
+  font-size: 20;
+`;
+
 export const MaterialButton = styled.TouchableHighlight`
   align-items: center;
   background-color: #6202ee;
@@ -23,4 +28,11 @@ export const Container = styled.View`
   justify-content: center;
   background-color: #272727;
   padding: 20px;
+`;
+
+export const UpdateCreatePostContainer = styled.View`
+  flex: 1;
+  justify-content: flex-start;
+  padding: 20px;
+  background-color: #272727;
 `;

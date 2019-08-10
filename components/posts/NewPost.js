@@ -5,6 +5,7 @@ import { useMutation, useQuery } from "@apollo/react-hooks";
 
 import PostForm from "./PostForm";
 import { USER } from "../../graphql/queries";
+import { UpdateCreatePostContainer } from "../styles/styles";
 
 const NewPost = props => {
   const { loading: loadingUser, error, data: userData } = useQuery(USER);
@@ -25,9 +26,9 @@ const NewPost = props => {
   };
   if (loading) return <ActivityIndicator />;
   return (
-    <View>
+    <UpdateCreatePostContainer>
       <PostForm onSubmit={onSubmit} />
-    </View>
+    </UpdateCreatePostContainer>
   );
 };
 
