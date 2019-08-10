@@ -9,7 +9,6 @@ const client = new ApolloClient({
   uri: "https://api.graph.cool/simple/v1/cjz0vkrh238ui0138ioeff5yo",
   request: async operation => {
     const token = await getToken();
-    console.log(token);
     operation.setContext({
       headers: {
         authorization: token ? `Bearer ${token}` : ""

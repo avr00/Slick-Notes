@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, TextInput, Button } from "react-native";
 import { Form, Item, Input, Label } from "native-base";
 
 const PostForm = props => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+
+  useEffect(() => {
+    if (props.update) {
+      setTitle(props.title);
+      setBody(props.body);
+    }
+  }, []);
   const submitForm = () => {
     props.onSubmit({
       title,
       body
     });
-    console.log(title, body, "MMM");
   };
   return (
     <Form>

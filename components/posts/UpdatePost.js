@@ -9,14 +9,19 @@ import { USER } from "../../graphql/queries";
 const NewPost = props => {
   const { loading: loadingUser, error, data: userData } = useQuery(USER);
 
-  const [createPost, { data, loading }] = useMutation(NEW_POST, {
+  const [updatePost, { data, loading }] = useMutation(UPDATE_POST, {
     refetchQueries: () => [{ query: USER }]
   });
 
   const onSubmit = async ({ title, body }) => {
     try {
-      await createPost({
-        variables: { title, body, userId: userData.user.id }
+      await updatePost({
+        variables: {
+          title,
+          body,
+          userId: userData.user.id,
+          id: props.navigation.state.params.post.Post.id
+        }
       });
       props.navigation.goBack();
     } catch (err) {
@@ -26,15 +31,21 @@ const NewPost = props => {
   if (loading) return <ActivityIndicator />;
   return (
     <View>
-      <PostForm onSubmit={onSubmit} />
+      <PostForm
+        onSubmit={onSubmit}
+        update={true}
+        title={props.navigation.state.params.post.Post.title}
+        body={props.navigation.state.params.post.Post.body}
+      />
     </View>
   );
 };
 
-const NEW_POST = gql`
-  mutation newPost($title: String!, $body: String, $userId: ID!) {
-    createPost(title: $title, body: $body, userId: $userId) {
+const UPDATE_POST = gql`
+  mutation updatePost($title: String!, $body: String, $userId: ID!, $id: ID!) {
+    updatePost(title: $title, body: $body, userId: $userId, id: $id) {
       id
+      createdAt
       title
       body
     }

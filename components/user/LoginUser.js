@@ -16,7 +16,6 @@ const LoginUser = props => {
       const signInResponse = await signInUserMutation({
         variables: { email, password }
       });
-      console.log("SIGN IN ", signInResponse);
       await signIn(signInResponse.data.signinUser.token);
       props.navigation.navigate("App");
     } catch (err) {

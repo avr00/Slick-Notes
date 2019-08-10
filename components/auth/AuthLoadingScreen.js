@@ -7,7 +7,6 @@ const AuthLoadingScreen = props => {
   const { loading, error, data } = useQuery(USER, {
     fetchPolicy: "network-only",
     onCompleted: () => {
-      console.log("USER FROM AUTH LOADING SCREEN", data);
       props.navigation.navigate(data.user ? "App" : "Auth");
     }
   });

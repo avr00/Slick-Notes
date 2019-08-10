@@ -6,6 +6,7 @@ import {
 
 import navigationStyles from "./styles/navigationStyles";
 import NewPost from "./components/posts/NewPost";
+import UpdatePost from "./components/posts/UpdatePost";
 import Post from "./components/posts/Post";
 import Login from "./components/user/Login";
 import Home from "./components/home/Home";
@@ -31,6 +32,10 @@ const AppStack = createStackNavigator({
   },
   NewPost: {
     screen: NewPost,
+    navigationOptions: navigationStyles("Create New Post")
+  },
+  UpdatePost: {
+    screen: UpdatePost,
     navigationOptions: navigationStyles("Create New Post")
   }
 });
