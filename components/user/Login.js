@@ -10,7 +10,7 @@ const Login = () => {
     <View style={styles.container}>
       {register ? <CreateUser /> : <LoginUser />}
       <Button
-        title={register ? "Login" : "Register"}
+        title={register ? "Login" : "Create Account"}
         onPress={() => setRegister(!register)}
       />
     </View>
@@ -20,7 +20,7 @@ const Login = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center"
+    justifyContent: "space-around"
   }
 });
 
