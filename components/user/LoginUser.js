@@ -1,11 +1,18 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { useMutation, useApolloClient } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { withNavigation } from "react-navigation";
+import styled from "styled-components";
 
 import UserForm from "./UserForm";
 import { signIn } from "../../LoginUtils";
+
+const TitleText = styled.Text`
+  color: white;
+  font-size: 30;
+  text-align: center;
+`;
 
 const LoginUser = props => {
   const [signInUserMutation] = useMutation(SIGN_IN_USER);
@@ -24,14 +31,23 @@ const LoginUser = props => {
   };
 
   return (
-    <View>
-      <Text>Login</Text>
+    <View style={styles.container}>
+      <TitleText>Login</TitleText>
       <UserForm onSubmit={loginUser} type="Login" />
     </View>
   );
 };
 
 export default withNavigation(LoginUser);
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: "#272727",
+    padding: 20
+  }
+});
 
 const SIGN_IN_USER = gql`
   mutation SignInUser($email: String!, $password: String!) {

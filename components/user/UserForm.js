@@ -1,6 +1,19 @@
 import React, { useState } from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, TouchableHighlight } from "react-native";
 import { Form, Item, Input, Label } from "native-base";
+import styled from "styled-components";
+
+const MaterialButton = styled.TouchableHighlight`
+  align-items: center;
+  background-color: #6202ee;
+  padding: 15px;
+  margin-top: 20px;
+`;
+
+const ButtonText = styled.Text`
+  color: white;
+  font-size: 20px;
+`;
 
 const UserForm = props => {
   const [email, setEmail] = useState("");
@@ -13,7 +26,7 @@ const UserForm = props => {
   return (
     <Form>
       <Item floatingLabel>
-        <Label>Email</Label>
+        <Label style={{ color: "white" }}>Email</Label>
         <Input
           keyboardType="email-address"
           value={email}
@@ -21,14 +34,16 @@ const UserForm = props => {
         />
       </Item>
       <Item floatingLabel>
-        <Label>Password</Label>
+        <Label style={{ color: "white" }}>Password</Label>
         <Input
           secureTextEntry
           value={password}
           onChangeText={value => setPassword(value)}
         />
       </Item>
-      <Button title={props.type} onPress={submitForm} />
+      <MaterialButton onPress={submitForm}>
+        <ButtonText>Submit</ButtonText>
+      </MaterialButton>
     </Form>
   );
 };

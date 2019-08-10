@@ -7,13 +7,10 @@ import Posts from "../posts/Posts";
 import { signOut } from "../../LoginUtils";
 function Home(props) {
   const client = useApolloClient();
-
-  const goToPost = () => {
-    props.navigation.navigate("Post");
-  };
   const goToNewPost = () => {
     props.navigation.navigate("NewPost");
   };
+
   return (
     <View style={styles.container}>
       <Posts navigation={props.navigation} />

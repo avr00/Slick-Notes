@@ -8,9 +8,11 @@ import navigationStyles from "./styles/navigationStyles";
 import NewPost from "./components/posts/NewPost";
 import UpdatePost from "./components/posts/UpdatePost";
 import Post from "./components/posts/Post";
-import Login from "./components/user/Login";
+import Welcome from "./components/user/Welcome";
 import Home from "./components/home/Home";
 import AuthLoadingScreen from "./components/auth/AuthLoadingScreen";
+import CreateUser from "./components/user/CreateUser";
+import LoginUser from "./components/user/LoginUser";
 
 const AppStack = createStackNavigator({
   Home: {
@@ -40,7 +42,11 @@ const AppStack = createStackNavigator({
   }
 });
 
-const AuthStack = createStackNavigator({ SignIn: Login });
+const AuthStack = createStackNavigator({
+  Welcome: Welcome,
+  SignIn: LoginUser,
+  SignUp: CreateUser
+});
 
 export default createAppContainer(
   createSwitchNavigator(
