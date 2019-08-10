@@ -2,10 +2,10 @@ import React from "react";
 import { View, Text, FlatList, ActivityIndicator } from "react-native";
 import { List, ListItem, Body, Right, Icon } from "native-base";
 import { useQuery } from "@apollo/react-hooks";
-import { gql } from "apollo-boost";
+import { USER } from "../../graphql/queries";
 
 const Posts = props => {
-  const { loading, error, data } = useQuery(POSTS);
+  const { loading, error, data } = useQuery(USER);
 
   if (loading) return <ActivityIndicator />;
   if (error) return <Text>Error :(</Text>;
@@ -15,7 +15,7 @@ const Posts = props => {
     <View>
       <List>
         <FlatList
-          data={data.allPosts}
+          data={data.user.posts}
           renderItem={({ item }) => (
             <ListItem
               onPress={() =>
@@ -41,13 +41,3 @@ const Posts = props => {
 };
 
 export default Posts;
-
-export const POSTS = gql`
-  query allPosts {
-    allPosts(orderBy: createdAt_DESC) {
-      id
-      title
-      body
-    }
-  }
-`;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, StatusBar, StyleSheet, View } from "react-native";
 import { useQuery } from "@apollo/react-hooks";
-import { gql } from "apollo-boost";
+import { USER } from "../../graphql/queries";
 
 const AuthLoadingScreen = props => {
   const { loading, error, data } = useQuery(USER, {
@@ -19,14 +19,5 @@ const AuthLoadingScreen = props => {
     </View>
   );
 };
-
-const USER = gql`
-  query user {
-    user {
-      id
-      email
-    }
-  }
-`;
 
 export default AuthLoadingScreen;
