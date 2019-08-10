@@ -25,6 +25,7 @@ export const signIn = async newToken => {
 
 export const signOut = async () => {
   try {
+    token = undefined;
     return await AsyncStorage.removeItem("AUTH_TOKEN");
   } catch (e) {
     console.log(err);

@@ -5,8 +5,9 @@ import { USER } from "../../graphql/queries";
 
 const AuthLoadingScreen = props => {
   const { loading, error, data } = useQuery(USER, {
+    fetchPolicy: "network-only",
     onCompleted: () => {
-      console.log("COMPLETED!!");
+      console.log("USER FROM AUTH LOADING SCREEN", data);
       props.navigation.navigate(data.user ? "App" : "Auth");
     }
   });

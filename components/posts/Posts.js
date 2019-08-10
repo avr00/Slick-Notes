@@ -5,11 +5,15 @@ import { useQuery } from "@apollo/react-hooks";
 import { USER } from "../../graphql/queries";
 
 const Posts = props => {
-  const { loading, error, data } = useQuery(USER);
+  const { loading, error, data } = useQuery(USER, {
+    fetchPolicy: "network-only"
+  });
 
   if (loading) return <ActivityIndicator />;
-  if (error) return <Text>Error :(</Text>;
-  console.log(data);
+  if (error) {
+    console.log(error);
+    return <Text>Error :(</Text>;
+  }
 
   return (
     <View>

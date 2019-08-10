@@ -1,20 +1,24 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation, useApolloClient } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
+import { withNavigation } from "react-navigation";
 
 import UserForm from "./UserForm";
 import { signIn } from "../../LoginUtils";
 
-const LoginUser = () => {
+const LoginUser = props => {
   const [signInUserMutation] = useMutation(SIGN_IN_USER);
+  const client = useApolloClient();
 
   const loginUser = async ({ email, password }) => {
     try {
       const signInResponse = await signInUserMutation({
         variables: { email, password }
       });
-      signIn(signInResponse.data.signinUser.token);
+      console.log("SIGN IN ", signInResponse);
+      await signIn(signInResponse.data.signinUser.token);
+      props.navigation.navigate("App");
     } catch (err) {
       console.log(err);
     }
@@ -28,6 +32,8 @@ const LoginUser = () => {
   );
 };
 
+export default withNavigation(LoginUser);
+
 const SIGN_IN_USER = gql`
   mutation SignInUser($email: String!, $password: String!) {
     signinUser(email: { email: $email, password: $password }) {
@@ -35,5 +41,3 @@ const SIGN_IN_USER = gql`
     }
   }
 `;
-
-export default LoginUser;
