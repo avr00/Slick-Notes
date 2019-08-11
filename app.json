@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "react-native-one",
-    "slug": "react-native-one",
+    "name": "Slick Notes",
+    "slug": "slicl-notes",
     "privacy": "public",
     "sdkVersion": "34.0.0",
     "platforms": ["ios", "android", "web"],
@@ -21,7 +21,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.firstapp.notesapp"
+      "package": "com.avr00.slicknotes"
     }
   }
 }
