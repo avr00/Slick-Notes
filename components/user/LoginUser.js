@@ -27,7 +27,10 @@ const LoginUser = props => {
   return (
     <Container>
       <TitleText>Login</TitleText>
-      <UserForm onSubmit={loginUser} type="Login" />
+      <UserForm
+        onSubmit={loginUser}
+        btnTitle={props.navigation.state.params.btnTitle}
+      />
     </Container>
   );
 };

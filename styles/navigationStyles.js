@@ -2,7 +2,7 @@ export default function(title) {
   return {
     title: title,
     headerStyle: {
-      backgroundColor: "red"
+      backgroundColor: "#5A00DD"
     },
     headerBackTitleStyle: {
       color: "white"

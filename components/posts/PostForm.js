@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet, TextInput, Button } from "react-native";
-import { Form, Item, Input, Label } from "native-base";
+import { Form, Item, Input, Label, Textarea } from "native-base";
 import { MaterialButton, ButtonText } from "../styles/styles";
 
 const PostForm = props => {
@@ -21,7 +21,7 @@ const PostForm = props => {
   };
   return (
     <Form>
-      <Item floatingLabel>
+      <Item stackedLabel>
         <Label style={{ color: "white" }}>Title</Label>
         <Input
           style={{ color: "white" }}
@@ -29,17 +29,13 @@ const PostForm = props => {
           value={title}
         />
       </Item>
-
-      <Item floatingLabel>
-        <Label style={{ color: "white" }}>Body</Label>
-        <Input
-          style={{ color: "white", textAlignVertical: "top", height: 300 }}
-          multiline
-          onChangeText={value => setBody(value)}
-          value={body}
-        />
-      </Item>
-
+      <Textarea
+        style={{ color: "white" }}
+        rowSpan={7}
+        placeholder="Body"
+        onChangeText={value => setBody(value)}
+        value={body}
+      />
       <MaterialButton onPress={submitForm}>
         <ButtonText>Save</ButtonText>
       </MaterialButton>

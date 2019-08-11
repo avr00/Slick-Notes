@@ -14,10 +14,18 @@ const Login = props => {
         }}
         source={require("../../assets/logotype.png")}
       />
-      <MaterialButton onPress={() => props.navigation.navigate("SignIn")}>
+      <MaterialButton
+        onPress={() =>
+          props.navigation.navigate("SignIn", { btnTitle: "Login" })
+        }
+      >
         <ButtonText>Login</ButtonText>
       </MaterialButton>
-      <MaterialButton onPress={() => props.navigation.navigate("SignUp")}>
+      <MaterialButton
+        onPress={() =>
+          props.navigation.navigate("SignUp", { btnTitle: "Register" })
+        }
+      >
         <ButtonText>Register</ButtonText>
       </MaterialButton>
     </Container>

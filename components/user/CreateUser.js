@@ -28,12 +28,13 @@ const CreateUser = props => {
   return (
     <Container>
       <TitleText>Register</TitleText>
-      <UserForm onSubmit={createUser} type="Register" />
+      <UserForm
+        onSubmit={createUser}
+        btnTitle={props.navigation.state.params.btnTitle}
+      />
     </Container>
   );
 };
-
-
 
 export default withNavigation(CreateUser);
 
