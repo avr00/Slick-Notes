@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { ActivityIndicator, StatusBar, StyleSheet, View } from "react-native";
+import React from "react";
+import { StatusBar } from "react-native";
 import { Spinner } from "native-base";
 import { useQuery } from "@apollo/react-hooks";
 import { USER } from "../../graphql/queries";

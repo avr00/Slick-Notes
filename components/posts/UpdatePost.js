@@ -1,8 +1,7 @@
 import React from "react";
-import { View, ActivityIndicator } from "react-native";
+import { ActivityIndicator } from "react-native";
 import { gql } from "apollo-boost";
 import { useMutation, useQuery } from "@apollo/react-hooks";
-import styled from "styled-components";
 
 import PostForm from "./PostForm";
 import { USER } from "../../graphql/queries";

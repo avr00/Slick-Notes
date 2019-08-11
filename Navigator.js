@@ -4,7 +4,9 @@ import {
   createAppContainer
 } from "react-navigation";
 
-import navigationStyles, { navStylesAuth } from "./styles/navigationStyles";
+import navigationStyles, {
+  navStylesAuth
+} from "./components/styles/navigationStyles";
 import NewPost from "./components/posts/NewPost";
 import UpdatePost from "./components/posts/UpdatePost";
 import Post from "./components/posts/Post";

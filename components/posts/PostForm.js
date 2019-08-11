@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, TextInput, Button } from "react-native";
+import { StyleSheet } from "react-native";
 import { Form, Item, Input, Label, Textarea } from "native-base";
 import { MaterialButton, ButtonText } from "../styles/styles";
 

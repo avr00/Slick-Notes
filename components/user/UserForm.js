@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Item, Input, Label } from "native-base";
 import { MaterialButton, ButtonText } from "../styles/styles";
 
 const UserForm = props => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  useEffect(() => {
-    console.log(props);
-  }, []);
 
   const submitForm = () => {
     props.onSubmit({ email, password });

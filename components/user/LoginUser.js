@@ -1,6 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { useMutation, useApolloClient } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { withNavigation } from "react-navigation";
 
@@ -10,7 +9,6 @@ import { signIn } from "../../LoginUtils";
 
 const LoginUser = props => {
   const [signInUserMutation] = useMutation(SIGN_IN_USER);
-  const client = useApolloClient();
 
   const loginUser = async ({ email, password }) => {
     try {

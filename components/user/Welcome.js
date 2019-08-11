@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, StyleSheet, Button, Image } from "react-native";
+import React from "react";
+import { Image } from "react-native";
 import { MaterialButton, ButtonText, Container } from "../styles/styles";
 
 const Login = props => {

@@ -1,5 +1,4 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
 import { useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { withNavigation } from "react-navigation";

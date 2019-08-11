@@ -5,8 +5,6 @@ import { useQuery } from "@apollo/react-hooks";
 import { USER } from "../../graphql/queries";
 import styled from "styled-components";
 
-import { Container } from "../styles/styles";
-
 export const PostsContainer = styled.View`
   flex: 1;
   justify-content: flex-start;

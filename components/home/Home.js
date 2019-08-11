@@ -1,11 +1,11 @@
 import React from "react";
-import { StyleSheet, Button, View, TouchableHighlight } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Fab, Icon } from "native-base";
 import { useApolloClient } from "@apollo/react-hooks";
 
 import Posts from "../posts/Posts";
 import { signOut } from "../../LoginUtils";
-import { MaterialButton, ButtonText, FabIcon } from "../styles/styles";
+import { MaterialButton, ButtonText } from "../styles/styles";
 
 function Home(props) {
   const client = useApolloClient();
