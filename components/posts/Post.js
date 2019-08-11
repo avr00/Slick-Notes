@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Text, ActivityIndicator, StyleSheet } from "react-native";
+import { Text, StyleSheet } from "react-native";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { Fab, Icon } from "native-base";
@@ -7,6 +7,7 @@ import { withNavigation } from "react-navigation";
 import styled from "styled-components";
 
 import { NormalText } from "../styles/styles";
+import LoadingScreen from "../shared/LoadingScreen";
 
 const PostContainer = styled.View`
   flex: 1;
@@ -36,7 +37,7 @@ function Post(props) {
     });
   };
 
-  if (loading) return <ActivityIndicator />;
+  if (loading) return <LoadingScreen />;
   if (error) return <Text>`Error! ${error}`</Text>;
   return (
     <PostContainer>

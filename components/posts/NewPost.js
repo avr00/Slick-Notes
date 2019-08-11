@@ -1,11 +1,11 @@
 import React from "react";
-import { ActivityIndicator } from "react-native";
 import { gql } from "apollo-boost";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 
 import PostForm from "./PostForm";
 import { USER } from "../../graphql/queries";
 import { UpdateCreatePostContainer } from "../styles/styles";
+import LoadingScreen from "../shared/LoadingScreen";
 
 const NewPost = props => {
   const { loading: loadingUser, error, data: userData } = useQuery(USER);
@@ -24,7 +24,7 @@ const NewPost = props => {
       console.error(err);
     }
   };
-  if (loading) return <ActivityIndicator />;
+  if (loading) return <LoadingScreen />;
   return (
     <UpdateCreatePostContainer>
       <PostForm onSubmit={onSubmit} />

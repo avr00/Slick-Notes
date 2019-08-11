@@ -4,6 +4,7 @@ import { List, ListItem, Body, Right, Icon } from "native-base";
 import { useQuery } from "@apollo/react-hooks";
 import { USER } from "../../graphql/queries";
 import styled from "styled-components";
+import LoadingScreen from "../shared/LoadingScreen";
 
 export const PostsContainer = styled.View`
   flex: 1;
@@ -21,7 +22,7 @@ const Posts = props => {
     fetchPolicy: "network-only"
   });
 
-  if (loading) return <ActivityIndicator />;
+  if (loading) return <LoadingScreen />;
   if (error) {
     console.log(error);
     return <Text>Error :(</Text>;
