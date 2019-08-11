@@ -4,7 +4,7 @@ import {
   createAppContainer
 } from "react-navigation";
 
-import navigationStyles from "./styles/navigationStyles";
+import navigationStyles, { navStylesAuth } from "./styles/navigationStyles";
 import NewPost from "./components/posts/NewPost";
 import UpdatePost from "./components/posts/UpdatePost";
 import Post from "./components/posts/Post";
@@ -43,9 +43,9 @@ const AppStack = createStackNavigator({
 });
 
 const AuthStack = createStackNavigator({
-  Welcome: Welcome,
-  SignIn: LoginUser,
-  SignUp: CreateUser
+  Welcome: { screen: Welcome, navigationOptions: navStylesAuth },
+  SignIn: { screen: LoginUser, navigationOptions: navStylesAuth },
+  SignUp: { screen: CreateUser, navigationOptions: navStylesAuth }
 });
 
 export default createAppContainer(

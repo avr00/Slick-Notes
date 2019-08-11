@@ -6,7 +6,12 @@ const Login = props => {
   return (
     <Container>
       <Image
-        style={{ width: 150, height: 100, alignSelf: "center" }}
+        style={{
+          width: 150,
+          height: 100,
+          alignSelf: "center",
+          marginBottom: "auto"
+        }}
         source={require("../../assets/logotype.png")}
       />
       <MaterialButton onPress={() => props.navigation.navigate("SignIn")}>

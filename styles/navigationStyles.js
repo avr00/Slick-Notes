@@ -10,3 +10,15 @@ export default function(title) {
     headerTintColor: "white"
   };
 }
+
+export const navStylesAuth = () => {
+  return {
+    headerStyle: {
+      backgroundColor: "#202020"
+    },
+    headerBackTitleStyle: {
+      color: "white"
+    },
+    headerTintColor: "white"
+  };
+};
